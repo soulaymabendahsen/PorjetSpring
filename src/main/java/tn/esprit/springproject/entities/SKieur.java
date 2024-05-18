@@ -26,7 +26,7 @@ public class SKieur implements Serializable {
     private LocalDate dateNaissance;
 
     private String ville;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private Abonnement abonnement;
 
     @OneToMany(mappedBy = "skieur")

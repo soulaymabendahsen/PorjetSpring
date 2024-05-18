@@ -3,6 +3,7 @@ package tn.esprit.springproject.restController;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Abonnement;
+import tn.esprit.springproject.entities.TypeAbonnement;
 import tn.esprit.springproject.service.IAbonnement;
 
 import java.util.List;
@@ -48,4 +49,12 @@ public class AbonnementRestController {
     public void deleteAb(@PathVariable Long numAb){
         iAbonnement.deleteAbonnement(numAb);
     }
+
+
+
+    @GetMapping("/getListAbonnementsByTypeAbon")
+    public List<Abonnement> geAbonnementsByTypeAbon(@RequestBody TypeAbonnement typeAbonnement){
+        return iAbonnement.listeAbonnements(typeAbonnement);
+    }
+
 }

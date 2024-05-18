@@ -1,6 +1,7 @@
 package tn.esprit.springproject.service;
 
 import tn.esprit.springproject.entities.Abonnement;
+import tn.esprit.springproject.entities.TypeAbonnement;
 
 import java.util.List;
 
@@ -17,4 +18,6 @@ public interface IAbonnement {
 
 
     public void deleteAbonnement (Long numAbon);
+
+    public List<Abonnement> listeAbonnements (TypeAbonnement typeAbonnement);
 }

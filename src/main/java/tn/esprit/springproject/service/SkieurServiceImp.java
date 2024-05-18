@@ -1,5 +1,6 @@
 package tn.esprit.springproject.service;
 
+import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.springproject.entities.Cours;
@@ -69,7 +70,7 @@ public class SkieurServiceImp implements ISkieur {
 
         }
 
-        return skr.save(sk);
+        return savedSk;
     }
 
     @Override

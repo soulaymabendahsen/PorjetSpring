@@ -3,6 +3,7 @@ package tn.esprit.springproject.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.springproject.entities.Abonnement;
+import tn.esprit.springproject.entities.TypeAbonnement;
 import tn.esprit.springproject.repository.AbonnementRepository;
 
 import java.util.List;
@@ -36,5 +37,10 @@ public class AbonnementServiceImp implements IAbonnement{
     @Override
     public void deleteAbonnement(Long numAbon) {
 
+    }
+
+    @Override
+    public List<Abonnement> listeAbonnements(TypeAbonnement typeAbonnement) {
+        return abr.findByTypeAbon(typeAbonnement);
     }
 }
