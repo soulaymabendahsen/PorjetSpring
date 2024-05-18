@@ -17,4 +17,9 @@ public interface ISkieur {
 
 
     public void deleteSkieur (Long numSk);
+
+    public SKieur getSkByNom(String nom);
+
+
+    public SKieur assignSkieurToPiste(Long numSk,Long numPiste);
 }

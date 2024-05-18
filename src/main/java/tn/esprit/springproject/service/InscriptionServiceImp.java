@@ -4,36 +4,58 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.springproject.entities.Inscription;
 import tn.esprit.springproject.repository.InscriptionRepository;
-
+import tn.esprit.springproject.repository.SkieurRepository;
+import tn.esprit.springproject.repository.CoursRepository;
 import java.util.List;
-@AllArgsConstructor
-@Service
-public class InscriptionServiceImp implements IInscription {
+import tn.esprit.springproject.entities.SKieur;
+import tn.esprit.springproject.entities.Cours;
 
-    private InscriptionRepository ir;
+@Service
+@AllArgsConstructor
+public class InscriptionServiceImp implements IInscription {
+    private InscriptionRepository inscriptionRepository;
+    private SkieurRepository skieurRepository;
+    private CoursRepository coursRepository;
+
     @Override
-    public Inscription addInscription(Inscription in) {
-        return ir.save(in);
+    public Inscription addInscription(Inscription inscription) {
+        return inscriptionRepository.save(inscription);
     }
 
     @Override
-    public Inscription updateInscription(Inscription in) {
-        return ir.save(in);
+    public Inscription updateInscription(Inscription inscription) {
+        return inscriptionRepository.save(inscription);
     }
 
     @Override
     public List<Inscription> getAllInscription() {
-        return ir.findAll();
+        return inscriptionRepository.findAll();
     }
+
+
 
     @Override
     public Inscription getInscriptionById(Long numInscription) {
-        return ir.findById(numInscription).orElse(null);
+        return inscriptionRepository.findById(numInscription).orElse(null);
     }
 
     @Override
     public void deleteInscription(Long numInscription) {
-        ir.deleteById(numInscription);
-
+        inscriptionRepository.deleteById(numInscription);
     }
+
+    @Override
+    public Inscription addInscriptionAndAssignToSkieur(Inscription inscription, Long numSk) {
+        SKieur skieur = skieurRepository.findById(numSk).orElse(null);
+        inscription.setSkieur(skieur);
+        return inscriptionRepository.save(inscription);
+    }
+
+    @Override
+    public Inscription addInscriptionAndAssignToCours(Inscription inscription, Long numCours) {
+        Cours cours = coursRepository.findById(numCours).orElse(null);
+        inscription.setCours(cours);
+        return inscriptionRepository.save(inscription);
+    }
+
 }

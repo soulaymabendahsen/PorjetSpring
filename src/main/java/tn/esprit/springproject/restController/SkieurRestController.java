@@ -41,7 +41,10 @@ public class SkieurRestController {
     public SKieur getSkById(@PathVariable Long numSk){
         return iSkieur.getSkById(numSk);
     }
-
+    @GetMapping("/getSkByNom/{nom}")
+    public SKieur getSkByNom(@PathVariable String nom){
+        return iSkieur.getSkByNom(nom);
+    }
 
 @DeleteMapping("/deleteSk/{numSk}")
     public void deleteSk(@PathVariable Long numSk){

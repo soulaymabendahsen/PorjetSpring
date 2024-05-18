@@ -16,4 +16,6 @@ public interface IInscription {
 
 
     public void deleteInscription (Long numInscription);
+    public  Inscription addInscriptionAndAssignToSkieur(Inscription inscription, Long numSk);
+    public Inscription addInscriptionAndAssignToCours(Inscription inscription, Long numCours);
 }

@@ -2,7 +2,9 @@ package tn.esprit.springproject.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.springproject.entities.Piste;
 import tn.esprit.springproject.entities.SKieur;
+import tn.esprit.springproject.repository.PisteRepository;
 import tn.esprit.springproject.repository.SkieurRepository;
 
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 public class SkieurServiceImp implements ISkieur {
 
     private SkieurRepository skr;
+    private PisteRepository pr;
     @Override
     public SKieur addSkieur(SKieur sk) {
         return skr.save(sk);
@@ -35,5 +38,17 @@ public class SkieurServiceImp implements ISkieur {
     public void deleteSkieur(Long numSk) {
         skr.deleteById(numSk);
 
+    }
+    @Override
+    public SKieur getSkByNom(String nom) {
+        return skr.findByNomS(nom);
+    }
+
+    @Override
+    public SKieur assignSkieurToPiste(Long numSk, Long numPiste) {
+        SKieur sk = skr.findById(numSk).orElse(null);
+        Piste piste = pr.findById(numPiste).orElse(null);
+
+        return null;
     }
 }
