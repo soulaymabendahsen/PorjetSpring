@@ -2,8 +2,12 @@ package tn.esprit.springproject.service;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import tn.esprit.springproject.entities.Cours;
+import tn.esprit.springproject.entities.Inscription;
 import tn.esprit.springproject.entities.Piste;
 import tn.esprit.springproject.entities.SKieur;
+import tn.esprit.springproject.repository.CoursRepository;
+import tn.esprit.springproject.repository.InscriptionRepository;
 import tn.esprit.springproject.repository.PisteRepository;
 import tn.esprit.springproject.repository.SkieurRepository;
 
@@ -17,6 +21,8 @@ public class SkieurServiceImp implements ISkieur {
 
     private SkieurRepository skr;
     private PisteRepository pr;
+    private CoursRepository cr;
+    private InscriptionRepository ir;
     @Override
     public SKieur addSkieur(SKieur sk) {
         return skr.save(sk);
@@ -45,6 +51,25 @@ public class SkieurServiceImp implements ISkieur {
     @Override
     public SKieur getSkByNom(String nom) {
         return skr.findByNomS(nom);
+    }
+
+    @Override
+    public SKieur addSkieurAndAssignToCours(SKieur sk, Long numC) {
+
+        SKieur savedSk = skr.save(sk);
+        Cours cours = cr.findById(numC).orElse(null);
+
+        Set<Inscription> inscriptions = savedSk.getInscriptions();
+
+        for (Inscription inscription : inscriptions){
+
+            inscription.setSkieur(savedSk);
+            inscription.setCours(cours);
+            ir.save(inscription);
+
+        }
+
+        return skr.save(sk);
     }
 
     @Override

@@ -20,6 +20,8 @@ public interface ISkieur {
 
     public SKieur getSkByNom(String nom);
 
+    public SKieur addSkieurAndAssignToCours(SKieur sk,Long numC);
+
 
     public SKieur assignSkieurToPiste(Long numSk,Long numPiste);
 }

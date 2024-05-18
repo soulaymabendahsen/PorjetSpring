@@ -58,5 +58,12 @@ public class SkieurRestController {
             return iSkieur.assignSkieurToPiste(numSk,numPiste);
     }
 
+@PostMapping("/addSkieurAndAssignToCours/{numC}")
+    public SKieur addSkieurAndAssignToCours(@RequestBody SKieur sk, @PathVariable Long numC){
+    return iSkieur.addSkieurAndAssignToCours(sk,numC);
+
+
+    }
+
 }
 
