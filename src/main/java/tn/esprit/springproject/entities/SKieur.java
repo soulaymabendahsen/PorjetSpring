@@ -31,7 +31,7 @@ public class SKieur implements Serializable {
     @OneToMany(mappedBy = "skieur")
     private Set<Inscription> inscriptions;
     @ManyToMany
-    private Set<Piste> piste;
+    private Set<Piste> pistes;
 
 
 

@@ -7,7 +7,10 @@ import tn.esprit.springproject.entities.SKieur;
 import tn.esprit.springproject.repository.PisteRepository;
 import tn.esprit.springproject.repository.SkieurRepository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @AllArgsConstructor
 @Service
 public class SkieurServiceImp implements ISkieur {
@@ -48,7 +51,16 @@ public class SkieurServiceImp implements ISkieur {
     public SKieur assignSkieurToPiste(Long numSk, Long numPiste) {
         SKieur sk = skr.findById(numSk).orElse(null);
         Piste piste = pr.findById(numPiste).orElse(null);
+       try {
 
-        return null;
+           sk.getPistes().add(piste);
+       }catch (NullPointerException e){
+           Set<Piste> pistes = new HashSet<>();
+           pistes.add(piste);
+           sk.setPistes(pistes);
+       }
+
+
+        return skr.save(sk);
     }
 }
