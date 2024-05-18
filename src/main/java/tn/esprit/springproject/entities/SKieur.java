@@ -1,5 +1,6 @@
 package tn.esprit.springproject.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,6 +32,7 @@ public class SKieur implements Serializable {
     @OneToMany(mappedBy = "skieur")
     private Set<Inscription> inscriptions;
     @ManyToMany
+    @JsonIgnore
     private Set<Piste> pistes;
 
 

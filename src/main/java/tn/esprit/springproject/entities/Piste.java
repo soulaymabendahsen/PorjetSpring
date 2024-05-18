@@ -27,7 +27,7 @@ public class Piste implements Serializable {
     @Enumerated(EnumType.STRING)
     private Couleur couleur;
 
-    @ManyToMany(mappedBy = "piste")
+    @ManyToMany(mappedBy = "pistes")
     private Set<SKieur> skieur;
 
 }

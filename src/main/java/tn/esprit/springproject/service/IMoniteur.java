@@ -17,4 +17,7 @@ public interface IMoniteur {
 
 
     public void deleteMoniteur (Long numMoniteur);
+
+
+    public Moniteur addMoniteurAndAssignToCours(Moniteur moniteur,Long numC);
 }

@@ -16,14 +16,14 @@ public class MoniteurController {
 
 
     @PostMapping("/addMon")
-    public Moniteur addMon(@RequestBody Moniteur mon){
+    public Moniteur addMon(@RequestBody Moniteur mon) {
 
         return iMoniteur.addMoniteur(mon);
 
     }
 
     @PutMapping("/updateMon")
-    public Moniteur updateMon(@RequestBody Moniteur mon){
+    public Moniteur updateMon(@RequestBody Moniteur mon) {
 
         return iMoniteur.updateMoniteur(mon);
 
@@ -31,20 +31,26 @@ public class MoniteurController {
 
     @GetMapping("/getAllMon")
 
-    public List<Moniteur> getAllMoniteur(){
+    public List<Moniteur> getAllMoniteur() {
         return iMoniteur.getAllMoniteur();
     }
 
 
     @GetMapping("/getMonById/{numMon}")
 
-    public Moniteur getMonById(@PathVariable Long numMon){
+    public Moniteur getMonById(@PathVariable Long numMon) {
         return iMoniteur.getMoniteurById(numMon);
     }
 
 
     @DeleteMapping("/deleteMon/{numMon}")
-    public void deleteMon(@PathVariable Long numMon){
+    public void deleteMon(@PathVariable Long numMon) {
         iMoniteur.deleteMoniteur(numMon);
+    }
+
+
+    @PostMapping("/addMoniteurAndAssignToCours/{numC}")
+    public Moniteur addMoniteurAndAssignToCours(@RequestBody Moniteur moniteur,@PathVariable Long numC) {
+        return iMoniteur.addMoniteurAndAssignToCours(moniteur,numC);
     }
 }

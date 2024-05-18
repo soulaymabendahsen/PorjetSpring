@@ -50,4 +50,13 @@ public class SkieurRestController {
     public void deleteSk(@PathVariable Long numSk){
        iSkieur.deleteSkieur(numSk);
     }
+
+
+    @PostMapping("/assignSkieurToPiste/{numSk}/{numPiste}")
+
+    public SKieur assignSkieurToPiste(@PathVariable  Long numSk,@PathVariable Long numPiste) {
+            return iSkieur.assignSkieurToPiste(numSk,numPiste);
+    }
+
 }
+
