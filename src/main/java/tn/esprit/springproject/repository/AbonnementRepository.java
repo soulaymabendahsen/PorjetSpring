@@ -6,11 +6,17 @@ import tn.esprit.springproject.entities.SKieur;
 import tn.esprit.springproject.entities.TypeAbonnement;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public interface AbonnementRepository extends JpaRepository<Abonnement,Long> {
 
     public List<Abonnement> findByTypeAbon(TypeAbonnement typeAbonnement);
+
+
+
+    public List<Abonnement> findByDateDebutBetween(LocalDate date1 , LocalDate date2);
 
 
 }

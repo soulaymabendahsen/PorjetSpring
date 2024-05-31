@@ -1,11 +1,14 @@
 package tn.esprit.springproject.restController;
 
 import lombok.AllArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.Abonnement;
 import tn.esprit.springproject.entities.TypeAbonnement;
 import tn.esprit.springproject.service.IAbonnement;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @AllArgsConstructor
@@ -57,4 +60,9 @@ public class AbonnementRestController {
         return iAbonnement.listeAbonnements(typeAbonnement);
     }
 
+ @GetMapping("retrieveAbonnementsByDateDebut/{date1}/{date2}")
+
+    public List<Abonnement> retrieveAbonnementsByDateDebut(@PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date1, @PathVariable @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  LocalDate date2){
+        return iAbonnement.retrieveAbonnementsByDateDebut(date1,date2);
+    }
 }

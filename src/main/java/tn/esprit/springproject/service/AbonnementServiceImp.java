@@ -6,6 +6,8 @@ import tn.esprit.springproject.entities.Abonnement;
 import tn.esprit.springproject.entities.TypeAbonnement;
 import tn.esprit.springproject.repository.AbonnementRepository;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 @Service
 @AllArgsConstructor
@@ -42,5 +44,10 @@ public class AbonnementServiceImp implements IAbonnement{
     @Override
     public List<Abonnement> listeAbonnements(TypeAbonnement typeAbonnement) {
         return abr.findByTypeAbon(typeAbonnement);
+    }
+
+    @Override
+    public List<Abonnement> retrieveAbonnementsByDateDebut(LocalDate date1, LocalDate date2) {
+        return abr.findByDateDebutBetween(date1,date2);
     }
 }

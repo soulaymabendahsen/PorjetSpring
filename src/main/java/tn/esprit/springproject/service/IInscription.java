@@ -1,6 +1,7 @@
 package tn.esprit.springproject.service;
 
 import tn.esprit.springproject.entities.Inscription;
+import tn.esprit.springproject.entities.Support;
 
 import java.util.List;
 
@@ -11,6 +12,8 @@ public interface IInscription {
 
     public List<Inscription> getAllInscription();
 
+
+    List<Integer> numWeeksCourseOfInstructorBySupport(Long numMoniteur, Support support);
 
     public Inscription getInscriptionById (Long numInscription);
 

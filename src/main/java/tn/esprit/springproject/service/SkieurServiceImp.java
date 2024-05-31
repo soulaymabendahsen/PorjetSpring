@@ -3,10 +3,7 @@ package tn.esprit.springproject.service;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import tn.esprit.springproject.entities.Cours;
-import tn.esprit.springproject.entities.Inscription;
-import tn.esprit.springproject.entities.Piste;
-import tn.esprit.springproject.entities.SKieur;
+import tn.esprit.springproject.entities.*;
 import tn.esprit.springproject.repository.CoursRepository;
 import tn.esprit.springproject.repository.InscriptionRepository;
 import tn.esprit.springproject.repository.PisteRepository;
@@ -89,4 +86,11 @@ public class SkieurServiceImp implements ISkieur {
 
         return skr.save(sk);
     }
+
+    @Override
+    public List<SKieur> retrieveSkieurByTypeAbonnement(TypeAbonnement typeAbonnement) {
+        return skr.findByAbonnement_TypeAbon(typeAbonnement);
+    }
+
+
 }

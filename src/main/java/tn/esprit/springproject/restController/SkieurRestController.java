@@ -3,6 +3,7 @@ package tn.esprit.springproject.restController;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.springproject.entities.SKieur;
+import tn.esprit.springproject.entities.TypeAbonnement;
 import tn.esprit.springproject.service.ISkieur;
 
 import java.util.List;
@@ -63,6 +64,11 @@ public class SkieurRestController {
     return iSkieur.addSkieurAndAssignToCours(sk,numC);
 
 
+    }
+
+@GetMapping("/retrieveSkieurByTypeAbonnement/{typeAbonnement}")
+    public List<SKieur> retrieveSkieurByTypeAbonnement(@PathVariable TypeAbonnement typeAbonnement){
+    return iSkieur.retrieveSkieurByTypeAbonnement(typeAbonnement);
     }
 
 }

@@ -3,6 +3,7 @@ package tn.esprit.springproject.service;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import tn.esprit.springproject.entities.Inscription;
+import tn.esprit.springproject.entities.Support;
 import tn.esprit.springproject.repository.InscriptionRepository;
 import tn.esprit.springproject.repository.SkieurRepository;
 import tn.esprit.springproject.repository.CoursRepository;
@@ -32,7 +33,10 @@ public class InscriptionServiceImp implements IInscription {
         return inscriptionRepository.findAll();
     }
 
-
+    @Override
+    public List<Integer> numWeeksCourseOfInstructorBySupport(Long numMoniteur, Support support) {
+        return inscriptionRepository.numWeeksCourseOfInstructorBySupport(numMoniteur,support);
+    }
 
     @Override
     public Inscription getInscriptionById(Long numInscription) {

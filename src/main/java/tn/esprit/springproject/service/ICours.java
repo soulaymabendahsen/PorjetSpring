@@ -1,6 +1,7 @@
 package tn.esprit.springproject.service;
 
 import tn.esprit.springproject.entities.Cours;
+import tn.esprit.springproject.entities.Support;
 
 import java.util.List;
 
@@ -16,4 +17,5 @@ public interface ICours {
 
 
     public void deleteCours (Long numcr);
+
 }
